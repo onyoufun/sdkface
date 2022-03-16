@@ -13,7 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "sdkface"
-include ':app'
 include ':platform'
 include ':template'
 include ':sample'
