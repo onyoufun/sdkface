@@ -10,8 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sdkface" >
 
+        <meta-data
+            android:name="SDK_APP_ID"
+            android:value="1234"/>
+        <meta-data
+            android:name="SDK_CHANNEL_ID"
+            android:value="10086"/>
+        <meta-data
+            android:name="SDK_CONFIG_ID"
+            android:value="4399"/>
+
         <activity
-            android:name="com.bianfeng.ymnsdk.sample.GameActivity"
+            android:name=".GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true">
             <intent-filter>
