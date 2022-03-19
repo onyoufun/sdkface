@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by huchanghai on 2018/1/16.
  */
 @YPlugin(strategy = YPlugin.Policy.FORCE, entrance = YPlugin.Entrance.ACTIVITY)
-public class GooglePlayInterface extends YmnPaymentInterface {
+public class GooglePlayInterface extends YmnPaymentInterface, YmnCallback {
 
     @Override
     public String getPluginId() {
@@ -51,18 +51,17 @@ public class GooglePlayInterface extends YmnPaymentInterface {
     public void onInit(final Context context) {
         super.onInit(context);
 
-        BillingDataSource.setYmnCallback(new YmnCallback() {
-            @Override
-            public void onCallBack(int code, String msg) {
-                sendResult(code, msg);
-            }
-        });
-
+        BillingDataSource.setYmnCallback(this);
         this.billingDataSource = BillingDataSource.getInstance(context,
                 BillingRepository.INAPP_SKUS,
                 BillingRepository.SUBSCRIPTION_SKUS,
                 BillingRepository.AUTO_CONSUME_SKUS);
-        this.gameRepository = new BillingRepository(billingDataSource);
+        this.gameRepository = new BillingRepository(billingDataSource, this);
+    }
+
+    @Override
+    public void onCallBack(int code, String msg) {
+        sendResult(code, msg);
     }
 
     @Override
@@ -76,9 +75,14 @@ public class GooglePlayInterface extends YmnPaymentInterface {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        billingDataSource.resume();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
 }

@@ -216,6 +216,16 @@ public class BillingDataSource implements
     }
 
     /**
+     * This is a pretty unusual occurrence. It happens primarily if the Google Play Store
+     * self-upgrades or is force closed.
+     */
+    @Override
+    public void onBillingServiceDisconnected() {
+        billingSetupComplete = false;
+        retryBillingServiceConnectionWithExponentialBackoff();
+    }
+
+    /**
      * Calls the billing client functions to query sku details for both the inapp and subscription
      * SKUs. SKU details are useful for displaying item names and price lists to the user, and are
      * required to make a purchase.
@@ -290,16 +300,6 @@ public class BillingDataSource implements
         } else {
             skuDetailsResponseTime = -SKU_DETAILS_REQUERY_TIME;
         }
-    }
-
-    /**
-     * This is a pretty unusual occurrence. It happens primarily if the Google Play Store
-     * self-upgrades or is force closed.
-     */
-    @Override
-    public void onBillingServiceDisconnected() {
-        billingSetupComplete = false;
-        retryBillingServiceConnectionWithExponentialBackoff();
     }
 
     /**
@@ -715,6 +715,7 @@ public class BillingDataSource implements
 
         if(skuDetails == null) {
             Log.e(TAG, "SkuDetails not found for: " + sku);
+            ymnCallback.onCallBack(YmnCode.PAYRESULT_FAIL, "SkuDetails not found for: " + sku);
             return;
         }
 

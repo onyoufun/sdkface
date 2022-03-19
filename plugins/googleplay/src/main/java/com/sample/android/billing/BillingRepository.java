@@ -20,6 +20,9 @@ import android.app.Activity;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 
+import com.linxcool.sdkface.YmnCallback;
+import com.linxcool.sdkface.YmnCode;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,8 +52,11 @@ public class BillingRepository {
     final SingleMediatorLiveEvent<Integer> allMessages = new SingleMediatorLiveEvent<>();
     final ExecutorService driveExecutor = Executors.newSingleThreadExecutor();
 
-    public BillingRepository(BillingDataSource billingDataSource) {
+    private YmnCallback ymnCallback;
+
+    public BillingRepository(BillingDataSource billingDataSource, YmnCallback ymnCallback) {
         this.billingDataSource = billingDataSource;
+        this.ymnCallback = ymnCallback;
 
         setupMessagesSingleMediatorLiveEvent();
 
@@ -81,10 +87,12 @@ public class BillingRepository {
                     case SKU_GAS:
                         // More gas acquired!
                         // TODO send result
+                        ymnCallback.onCallBack(YmnCode.PAYRESULT_SUCCESS, "More gas acquired!");
                         break;
                     case SKU_PREMIUM:
                         // You're now a premium driver!
                         // TODO send result
+                        ymnCallback.onCallBack(YmnCode.PAYRESULT_SUCCESS, "You're now a premium user!");
                         break;
                     case SKU_INFINITE_GAS_MONTHLY:
                     case SKU_INFINITE_GAS_YEARLY:
@@ -93,6 +101,7 @@ public class BillingRepository {
                         billingDataSource.refreshPurchasesAsync();
                         // Thank you for subscribing! You have infinite gas!
                         // TODO send result
+                        ymnCallback.onCallBack(YmnCode.PAYRESULT_SUCCESS, "hank you for subscribing! You have infinite gas!");
                         break;
                 }
             }
