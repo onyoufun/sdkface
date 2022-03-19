@@ -836,7 +836,7 @@ public class BillingDataSource implements
      * @see [Security]
      */
     private boolean isSignatureValid(@NonNull Purchase purchase) {
-        return Security.verifyPurchase(purchase.getOriginalJson(), purchase.getSignature());
+        return BillingSecurity.verifyPurchase(purchase.getOriginalJson(), purchase.getSignature());
     }
 
     /**

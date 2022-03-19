@@ -13,6 +13,7 @@ import com.linxcool.sdkface.feature.plugin.YmnPaymentInterface;
 import com.linxcool.sdkface.feature.protocol.YPlugin;
 import com.sample.android.billing.BillingRepository;
 import com.sample.android.billing.BillingDataSource;
+import com.sample.android.billing.BillingSecurity;
 
 import java.util.List;
 import java.util.Map;
@@ -50,7 +51,8 @@ public class GooglePlayInterface extends YmnPaymentInterface, YmnCallback {
     @Override
     public void onInit(final Context context) {
         super.onInit(context);
-
+        base64EncodedPublicKey = getPropertie("googleplayBase64EncodedPublicKey");
+        BillingSecurity.setBase64EncodedPublicKey(base64EncodedPublicKey);
         BillingDataSource.setYmnCallback(this);
         this.billingDataSource = BillingDataSource.getInstance(context,
                 BillingRepository.INAPP_SKUS,
@@ -67,11 +69,6 @@ public class GooglePlayInterface extends YmnPaymentInterface, YmnCallback {
     @Override
     public void pay(final Map<String, String> map) {
         gameRepository.buySku(getActivity(), "105");
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
     }
 
     @Override

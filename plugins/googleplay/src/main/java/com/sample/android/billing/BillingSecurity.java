@@ -41,7 +41,7 @@ import java.security.spec.X509EncodedKeySpec;
  * Security-related methods. For a secure implementation, all of this code should be implemented on
  * a server that communicates with the application on the device.
  */
-class Security {
+public class BillingSecurity {
     static final private String TAG = "IABUtil/Security";
     static final private String KEY_FACTORY_ALGORITHM = "RSA";
     static final private String SIGNATURE_ALGORITHM = "SHA1withRSA";
@@ -55,7 +55,11 @@ class Security {
 
     // final private static String BASE_64_ENCODED_PUBLIC_KEY = BuildConfig.BASE64_ENCODED_PUBLIC_KEY;
 
-    final private static String BASE_64_ENCODED_PUBLIC_KEY = "base64EncodedPublicKey=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3Po8KgJLUmpHmnXE8R/wlFF/GCMw4inGqDMULkQ7VyfRuQ3kNUjJwMSxV127TUHIFP0FOkVnuI6MVbHqY4M8kgWYkllQl9wT2bZFvD7AvwvOyiTGZKrbNx3hHMxDbUK9rVx7cUhiBpykj4kIAqUpy4M/iPYOaSp5kkShcmgC6xESoCOTCcRiM/DPIbyzyFJ7uJWeW4yl/FN4X3er1OGwn1L0piKTHdntpLm2FtjoRBJFJYkcqOQ6o3PesDjC28pdaMc1oBT93s1Nb4udZdvEuLlLSEHzqwNxOAT9/Lb0tBL7etJDefOhHexO8ss+V+JuY/jCsHtMoWjZNd28YZg6eQIDAQAB";
+    final private static String BASE_64_ENCODED_PUBLIC_KEY = "";
+
+    public static void setBase64EncodedPublicKey(String base64EncodedPublicKey){
+        BASE_64_ENCODED_PUBLIC_KEY = base64EncodedPublicKey;
+    }
 
     /**
      * Verifies that the data was signed with the given signature
