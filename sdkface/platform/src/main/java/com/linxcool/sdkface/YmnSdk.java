@@ -13,10 +13,10 @@ public class YmnSdk extends YmnSdkUserWrapper implements YmnUserCode, YmnPayment
 
     /**
      * 注册要加载的插件，需要最早调用
-     * @param cls
+     * @param clsName
      */
-    public static void registPlugin(Class<?> cls) {
-        YmnPluginLoader.registPluginClass(cls);
+    public static void registPlugin(String clsName) {
+        YmnPluginLoader.registPlugin(clsName);
     }
 
 }

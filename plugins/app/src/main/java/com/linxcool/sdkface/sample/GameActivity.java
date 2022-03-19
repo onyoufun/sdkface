@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.linxcool.sdkface.YmnSdk;
+import com.linxcool.sdkface.ironsource.IronSourceInterface;
 import com.linxcool.sdkface.util.Logger;
 
 import java.util.LinkedHashMap;
@@ -27,6 +28,8 @@ public class GameActivity extends SdkWrapperActivity implements Handler.Callback
         handler = new Handler(this);
         layoutPlugins = (LinearLayout) findViewById(R.id.layoutPlugins);
         refreshViews();
+
+        YmnSdk.callFunction("ymnis_request_reward_ad");
     }
 
     public void refreshViews() {
@@ -56,6 +59,19 @@ public class GameActivity extends SdkWrapperActivity implements Handler.Callback
             }
         });
 
+        FunctionViewFactory.registAdapter(new FunctionViewAdapter() {
+            @Override
+            public String getFunctionText() {
+                return "广告";
+            }
+            @Override
+            public void onClick(View view) {
+                YmnSdk.callFunction("ymnis_show_reward_ad");
+                //YmnSdk.callFunction("ymnis_request_reward_ad");
+            }
+        });
+
+
         for (FunctionViewAdapter adapter : FunctionViewFactory.getAdapters()) {
             View v = FunctionViewFactory.newView(this, adapter);
             layoutPlugins.addView(v);
@@ -80,6 +96,7 @@ public class GameActivity extends SdkWrapperActivity implements Handler.Callback
             case YmnSdk.ACTION_RET_INIT_SUCCESS:
             case YmnSdk.PAYRESULT_INIT_SUCCESS:
                 Logger.i("初始化成功");
+                break;
             case YmnSdk.ACTION_RET_INIT_FAIL:
             case YmnSdk.PAYRESULT_INIT_FAIL:
                 Logger.e("初始化失败 - " + msg);

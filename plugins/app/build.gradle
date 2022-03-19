@@ -6,7 +6,7 @@ android {
     compileSdk COMPILE_SDK_VERSION as int
 
     defaultConfig {
-        applicationId "com.bianfeng.sdkface.plugins"
+        applicationId "com.linxcool.sdkface.plugins"
         minSdk MIN_SDK_VERSION as int
         targetSdk TARGET_SDK_VERSION as int
         versionCode 1
@@ -30,4 +30,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'com.github.linxcool.sdkface:platform:v1.0.0'
     implementation project(path: ':googleplay')
+    implementation project(path: ':ironsource')
 }

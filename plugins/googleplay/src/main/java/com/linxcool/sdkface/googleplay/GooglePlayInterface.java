@@ -1,4 +1,4 @@
-package com.linxcool.sdkface.plugin.googleplay;
+package com.linxcool.sdkface.googleplay;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ public class GooglePlayInterface extends YmnPaymentInterface {
 
     @Override
     public String getPluginId() {
-        return "1001";
+        return "101";
     }
 
     @Override

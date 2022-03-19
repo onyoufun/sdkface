@@ -39,12 +39,12 @@ public class YmnProperties extends Properties {
         try {
             byte[] buf = null;
             AssetManager am = context.getAssets();
-            if (ResourceUtil.assetFileExist(context, "ymn.cfg")) {
-                buf = ResourceUtil.InputStreamToByte(am.open("ymn.cfg"));
+            if (ResourceUtil.assetFileExist(context, "sdkface.cfg")) {
+                buf = ResourceUtil.InputStreamToByte(am.open("sdkface.cfg"));
                 buf = DecodeUtil.decode(buf);
             }
-            if (ResourceUtil.assetFileExist(context, "usdk.cfg")) {
-                buf = ResourceUtil.InputStreamToByte(am.open("usdk.cfg"));
+            if (ResourceUtil.assetFileExist(context, "sdkface-debug.cfg")) {
+                buf = ResourceUtil.InputStreamToByte(am.open("sdkface-debug.cfg"));
             }
             boolean tryNext = buf != null;
             if (tryNext) {

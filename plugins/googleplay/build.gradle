@@ -27,14 +27,13 @@ android {
 dependencies {
     def version_billing = "4.1.0"
     def version_room = "2.3.0"
-    def version_lifecycle = "2.2.0"
-    def version_appcompat = "1.4.1"
 
     implementation "androidx.appcompat:appcompat:$version_appcompat"
     implementation "com.android.billingclient:billing:$version_billing"
-    implementation 'com.github.linxcool.sdkface:platform:v1.0.0'
+    implementation "com.github.linxcool.sdkface:platform:$version_sdkface"
 
-    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$version_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"
 
     implementation "androidx.room:room-runtime:$version_room"

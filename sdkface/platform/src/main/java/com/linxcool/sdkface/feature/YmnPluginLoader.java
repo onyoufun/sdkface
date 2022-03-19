@@ -24,7 +24,15 @@ public class YmnPluginLoader {
         }
     }
 
-    public static void registPluginClass(Class<?> cls) {
+    public static void registPlugin(String className) {
+        try {
+            registPlugin(Class.forName(className));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void registPlugin(Class<?> cls) {
         pluginClasses.add(cls);
     }
 
