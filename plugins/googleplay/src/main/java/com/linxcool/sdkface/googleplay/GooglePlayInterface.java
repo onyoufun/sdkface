@@ -23,7 +23,7 @@ import java.util.Map;
  * Created by huchanghai on 2018/1/16.
  */
 @YPlugin(strategy = YPlugin.Policy.FORCE, entrance = YPlugin.Entrance.ACTIVITY)
-public class GooglePlayInterface extends YmnPaymentInterface, YmnCallback {
+public class GooglePlayInterface extends YmnPaymentInterface implements YmnCallback {
 
     @Override
     public String getPluginId() {
@@ -51,7 +51,7 @@ public class GooglePlayInterface extends YmnPaymentInterface, YmnCallback {
     @Override
     public void onInit(final Context context) {
         super.onInit(context);
-        base64EncodedPublicKey = getPropertie("googleplayBase64EncodedPublicKey");
+        String base64EncodedPublicKey = getPropertie("googleplayBase64EncodedPublicKey");
         BillingSecurity.setBase64EncodedPublicKey(base64EncodedPublicKey);
         BillingDataSource.setYmnCallback(this);
         this.billingDataSource = BillingDataSource.getInstance(context,

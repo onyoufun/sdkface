@@ -55,7 +55,7 @@ public class BillingSecurity {
 
     // final private static String BASE_64_ENCODED_PUBLIC_KEY = BuildConfig.BASE64_ENCODED_PUBLIC_KEY;
 
-    final private static String BASE_64_ENCODED_PUBLIC_KEY = "";
+    private static String BASE_64_ENCODED_PUBLIC_KEY = "";
 
     public static void setBase64EncodedPublicKey(String base64EncodedPublicKey){
         BASE_64_ENCODED_PUBLIC_KEY = base64EncodedPublicKey;
