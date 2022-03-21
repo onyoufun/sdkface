@@ -78,6 +78,11 @@ public class YmnProperties extends Properties {
     }
 
     public static String getPluginValue(IPlugin plugin, String name) {
+        String value = getValue(name);
+        if(!TextUtils.isEmpty(value)) {
+            return value;
+        }
+
         if (jsoncfgs != null) {
             try {
                 JSONObject json = jsoncfgs.optJSONObject(plugin.getPluginName());
@@ -86,9 +91,6 @@ public class YmnProperties extends Properties {
                 e.printStackTrace();
                 return null;
             }
-        }
-        if (properties != null) {
-            return properties.getProperty(name);
         }
         return null;
     }
