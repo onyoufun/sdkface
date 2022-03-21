@@ -156,9 +156,10 @@ public abstract class YmnPlugin implements IPlugin {
     @Override
     public void callFunction(String functionName, LinkedHashMap<String, String> data) {
         if (isSupportFunction(functionName)) {
+            Logger.i(String.format("%s found function %s", getPluginName(), functionName));
             callFunctionWithResult(functionName, data);
         } else {
-            Logger.d(String.format("%s not found function %s", getPluginName(), functionName));
+            // not found
         }
     }
 

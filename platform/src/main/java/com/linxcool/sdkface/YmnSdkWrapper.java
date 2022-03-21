@@ -23,7 +23,7 @@ public class YmnSdkWrapper {
     private static YmnCallback dispatcher = new YmnCallback() {
         @Override
         public void onCallBack(int code, String msg) {
-            Logger.d(String.format("dispatcher callbacks(%d) for result(%d | %s)", callbacks.size(), code, msg));
+            Logger.i(String.format("dispatcher callbacks(%d) for result(%d | %s)", callbacks.size(), code, msg));
             for (YmnCallback callback : callbacks) {
                 callback.onCallBack(code, msg);
             }

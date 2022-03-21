@@ -48,32 +48,32 @@ public class Logger {
     /**
      * Priority constant for the println method; use Log.v.
      */
-    public static final int VERBOSE = 2;
+    public static final int VERBOSE = Log.VERBOSE;
 
     /**
      * Priority constant for the println method; use Log.d.
      */
-    public static final int DEBUG = 3;
+    public static final int DEBUG = Log.DEBUG;
 
     /**
      * Priority constant for the println method; use Log.i.
      */
-    public static final int INFO = 4;
+    public static final int INFO = Log.INFO;
 
     /**
      * Priority constant for the println method; use Log.w.
      */
-    public static final int WARN = 5;
+    public static final int WARN = Log.WARN;
 
     /**
      * Priority constant for the println method; use Log.e.
      */
-    public static final int ERROR = 6;
+    public static final int ERROR = Log.ERROR;
 
     /**
      * Priority constant for the println method.
      */
-    public static final int ASSERT = 7;
+    public static final int ASSERT = Log.ASSERT;
 
     private static String[] COLORS = {"#66007F", "#66007F", "#66007F", "#66007F", "#3A7F00", "#FF7F00", "#ff0000"};
 

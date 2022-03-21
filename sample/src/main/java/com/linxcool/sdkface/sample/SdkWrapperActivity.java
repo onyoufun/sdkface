@@ -20,7 +20,7 @@ public abstract class SdkWrapperActivity extends Activity implements YmnCallback
         super.onCreate(savedInstanceState);
 
         YmnSdk.setDebugMode(true);
-        YmnSdk.registPlugin(TemplateInterface.class);
+        YmnSdk.registPlugin(TemplateInterface.class.getName());
         YmnSdk.registCallback(this);
         YmnSdk.initialize(this);
     }

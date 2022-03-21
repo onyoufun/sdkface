@@ -47,6 +47,8 @@ public abstract class YmnPluginWrapper extends YmnPlugin {
     private YmnCallback callback;
     private List<YmnCallbackInterceptor> interceptors;
 
+    private boolean debugMode;
+
     public final void setCfgs(Map<String, String> cfgs) {
         this.cfgs = cfgs;
     }
@@ -223,12 +225,12 @@ public abstract class YmnPluginWrapper extends YmnPlugin {
 
     @Override
     public void setDebugMode(boolean mode) {
-        // TODO Auto-generated method stub
+        this.debugMode = mode;
     }
 
     @Override
     public boolean isDebugMode() {
-        return false;
+        return debugMode;
     }
 
     @Override
