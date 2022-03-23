@@ -94,11 +94,6 @@ public class AppConfig {
             mainActivity = getMetaDataValue(metaData, KEY_MAIN_ACTIVITY);
 
             check();
-
-            debug = Boolean.parseBoolean(YmnProperties.getValue("debug"));
-
-            Logger.i(TAG, "debugMode is" + debug);
-
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -118,11 +113,6 @@ public class AppConfig {
         if (TextUtils.isEmpty(appId)) {
             YmnPreferences.adaptStrategy(new YmnWarning("未配置Sdkface：SDK_APP_ID")).burst();
         }
-        /* 调试状态取消configId警告
-        if (TextUtils.isEmpty(configId)) {
-            YmnPreferences.adaptStrategy(new YmnWarning("未配置有猫腻 ConfigId")).burst();
-        }
-        */
     }
 
     private static String getMetaDataValue(Bundle metaData, String key) {

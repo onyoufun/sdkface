@@ -3,6 +3,7 @@ package com.linxcool.sdkface.feature;
 import android.content.Context;
 import android.content.Intent;
 
+import com.linxcool.sdkface.AppConfig;
 import com.linxcool.sdkface.YmnCallback;
 import com.linxcool.sdkface.action.ActionObserver;
 import com.linxcool.sdkface.action.ActionSupport;
@@ -40,8 +41,8 @@ public class YmnPluginManager {
             // 断开服务器请求，暂时仅适用本地控制
             // requestPluginsStateConfig(context);
             inited = true;
+            setDebugMode(AppConfig.isDebug());
         }
-
         YmnPluginInjector.inject(context, plugins);
         checkPluginsLocalState(context);
         onInit(context);
@@ -172,7 +173,7 @@ public class YmnPluginManager {
         YmnPreferences.adaptStrategy(new YmnWarning(message)).burst();
     }
 
-    public static void setDebugMode(boolean mode) {
+    private static void setDebugMode(boolean mode) {
         for (YmnPluginWrapper plugin : plugins.values()) {
             // if (plugin.isWorking())
             plugin.setDebugMode(mode);

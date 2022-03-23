@@ -115,8 +115,8 @@ public class YmnSdkWrapper {
     }
 
     public static void setDebugMode(boolean mode) {
-        YmnPluginManager.setDebugMode(mode);
         Logger.showDebugLog(mode);
+        AppConfig.setDebug(mode);
     }
 
     public static void onStart() {
