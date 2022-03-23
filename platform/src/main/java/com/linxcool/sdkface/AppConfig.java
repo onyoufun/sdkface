@@ -116,7 +116,7 @@ public class AppConfig {
         if (hostUrl == null) hostUrl = "";
 
         if (TextUtils.isEmpty(appId)) {
-            YmnPreferences.adaptStrategy(new YmnWarning("未配置有猫腻 AppId")).burst();
+            YmnPreferences.adaptStrategy(new YmnWarning("未配置Sdkface：SDK_APP_ID")).burst();
         }
         /* 调试状态取消configId警告
         if (TextUtils.isEmpty(configId)) {

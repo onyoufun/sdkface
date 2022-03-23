@@ -174,9 +174,8 @@ public class YmnPluginManager {
 
     public static void setDebugMode(boolean mode) {
         for (YmnPluginWrapper plugin : plugins.values()) {
-            if (plugin.isWorking()) {
-                plugin.setDebugMode(mode);
-            }
+            // if (plugin.isWorking())
+            plugin.setDebugMode(mode);
         }
     }
 
