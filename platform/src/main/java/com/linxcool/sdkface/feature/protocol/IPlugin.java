@@ -109,6 +109,8 @@ public interface IPlugin extends Serializable {
 
     void onActivityResult(int requestCode, int resultCode, Intent data);
 
+    void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults);
+
     void onLogin(Map<String, String> data);
 
     void onPay(Map<String, String> data);

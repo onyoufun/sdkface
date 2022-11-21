@@ -262,6 +262,14 @@ public class YmnPluginManager {
         }
     }
 
+    public static void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        for (YmnPluginWrapper plugin : plugins.values()) {
+            if (plugin.isWorking()) {
+                plugin.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+    }
+
     public static void onLogin(Map<String, String> data) {
         for (YmnPluginWrapper plugin : plugins.values()) {
             if (plugin.isWorking()) {

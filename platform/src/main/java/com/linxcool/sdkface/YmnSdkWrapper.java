@@ -150,6 +150,9 @@ public class YmnSdkWrapper {
     public static void onActivityResult(int requestCode, int resultCode, Intent data) {
         YmnPluginManager.onActivityResult(requestCode, resultCode, data);
     }
+    public static void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        YmnPluginManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     public static void runOnUiThread(Runnable runnable) {
         if (activity == null || activity.isFinishing()) {

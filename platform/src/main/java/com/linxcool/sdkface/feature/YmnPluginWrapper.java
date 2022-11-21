@@ -307,6 +307,11 @@ public abstract class YmnPluginWrapper extends YmnPlugin {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
     public void onLogin(Map<String, String> data) {
         this.loginedData = data;
     }
